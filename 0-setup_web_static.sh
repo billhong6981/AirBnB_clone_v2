@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # the script deploys the web_static to web server
+apt-get update
+apt-get install -y nginx
+ufw allow "nginx HTTP"
 if [ ! -d "/data/web_static/releases/test/" ]
 then
     mkdir -p /data/web_static/releases/test/

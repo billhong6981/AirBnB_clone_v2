@@ -10,11 +10,11 @@ def do_pack():
     """the function creates "tgz" archive to pack all the web_static files
     """
     if not os.path.exists('./versions'):
-       os.makedirs('./versions')
+        os.makedirs('./versions')
     _tgz = 'versions/web_static_{}.tgz'\
-      	.format(datetime.strftime(datetime.now(), "%Y%m%d%I%M%S"))
+        .format(datetime.strftime(datetime.now(), "%Y%m%d%I%M%S"))
     _tar = 'tar -czvf {} web_static'.format(_tgz)
     _run = local(_tar)
     if _run.failed:
-       return None
+        return None
     return _tgz

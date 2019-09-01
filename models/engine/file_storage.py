@@ -13,7 +13,7 @@ from datetime import datetime
 
 class FileStorage:
     """This class serializes instances to a JSON file and
-    deserializes JSON file to instances
+    deserializes JSON file to instances of class (obj dictionary)
     Attributes:
         __file_path: path to the JSON file
         __objects: objects will be stored
@@ -73,6 +73,13 @@ class FileStorage:
                     self.__objects[key] = value
         except FileNotFoundError:
             pass
+
+
+    def close(self):
+        """call reload() to deserialize json file to obj dictionary
+        """
+        self.reload()
+
 
     def classes(self):
         """Returns a dictionary of valid classes and their references."""

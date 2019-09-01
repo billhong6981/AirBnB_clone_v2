@@ -28,18 +28,20 @@ class DBStorage():
                                               getenv('HBNB_MYSQL_HOST'),
                                               getenv('HBNB_MYSQL_DB')),
                                       pool_pre_ping=True)
+        self.all_type = {
+            "State": State,
+            "City": City,
+            "User": User,
+            "Place": Place,
+            "Amenity": Amenity,
+            "Review": Review
+            }
 
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
     def reload(self):
         """reloads the database"""
-        from models.state import State
-        from models.city import City
-        from models.user import User
-        from models.amenity import Amenity
-        from models.place import Place
-        from models.review import Review
 
         Base.metadata.create_all(self.__engine)
         self.__session = sessionmaker(bind=self.__engine,
@@ -51,24 +53,15 @@ class DBStorage():
         """query database by cls type
             return a dictionary
         """
-        all_type = {
-            "State": State,
-            "City": City,
-            "User": User,
-            "Place": Place,
-            "Amenity": Amenity,
-            "Review": Review
-            }
-        if cls:
-            objs = self.__session.query(cls).all()
-        else:
-            objs = None
-            for cls in all_type.values():
-                objs += self.__session.query(cls).all()
         my_dic = {}
-        for obj in objs:
-            key = '{}.{}'.format(type(obj).__name__, obj.id)
-            my_dic[key] = obj
+        if cls is None:
+            for cls in self.all_type.values():
+                if self.__session.query(cls).all():
+                    for item in self.__session.query(cls).all():
+                        my_dic[item.id] = item
+        else:
+            for item in self.__session.query(self.all_type[cls]).all():
+                my_dic[item.id] = item
         return my_dic
 
     def new(self, obj):
@@ -88,3 +81,7 @@ class DBStorage():
         if obj:
             self.__session.delete(obj)
             self.save()
+
+    def close(self):
+        """to close the session"""
+        self.__session.close()

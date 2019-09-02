@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
+    <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css">
+    <link rel="icon" href="../static/images/icon.png" />
+    <title>HBnB</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+	<div class="locations">
+	  <h3>States</h3>
+	  <h4>&nbsp</h4>
+	  <div class="popover">
+	    <ul>
+	      {%- for value in dic.values()|sort(attribute='name') %}
+	      <li>
+		<h2>{{ value.name }}:</h2>
+		<ul>
+		  {%- for c in value.cities|sort(attribute='name') %}
+		  <li>{{ c.name }}</li>
+		  {%- endfor %}
+		</ul>
+	      </li>
+	      {%- endfor %}
+	    </ul>
+	  </div>
+	</div>
+
+	<div class="amenities">
+	  <h3>Amenities</h3>
+	  <h4>&nbsp</h4>
+	  <div class="popover">
+	    <ul>
+	      {%- for a in a_dic.values()|sort(attribute='name') %}
+	      <li>{{ a.name }}</li>
+	      {%- endfor %}
+	    </ul>
+	  </div>
+	</div>
+	<button type="button">Search</button>
+      </section>
+
+      <section class="places">
+	<h1>Places</h1>
+	{%- for pl in p_dic.values()|sort(attribute='name') %}
+	<article>
+	  <div class="title_box">
+	    <h2>{{ pl.name }}</h2>
+	    <div class="price_by_night">${{  pl.price_by_night }}</div>
+	  </div>
+	  <div class="information">
+	    <div class="max_guest">{{ pl.max_guest }}</div>
+            <div class="number_rooms">{{ pl.number_rooms }}</div>
+            <div class="number_bathrooms">{{ pl.number_bathrooms }} </div>
+	  </div>
+	  <div class="user">
+	    {%- for u in user_dic.values() if u.id == pl.user_id %}
+            <b>Owner:</b> {{ u.first_name + ' ' + u.last_name|e }}
+	    {%- endfor %}
+          </div>
+          <div class="description">
+	    {{ pl.description }}
+          </div>
+	</article>
+	 {%- endfor %}
+
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<HTML lang="en">
+  <HEAD>
+    <TITLE>HBNB</TITLE>
+  </HEAD>
+  <BODY>
+    <H1>{{ b }}</H1>
+        {%- if new %}
+        <H3>Cities:</H3>
+	<UL>
+            {%- for c in new.cities|sort(attribute='name') %}
+            <LI>{{ c.id }}: <B>{{ c.name }}</B></LI>
+	    {%- endfor %}
+	</UL>
+	{%- endif %}
+  </BODY>
+</HTML>

@@ -103,5 +103,4 @@ class DBStorage():
                    "Amenity": Amenity,
                    "Place": Place,
                    "Review": Review}
-        
         return classes

@@ -26,7 +26,6 @@ if getenv("HBNB_TYPE_STORAGE") == "db":
                                  nullable=False))
 
 
-
 class Place(BaseModel, Base):
     """This is the class for Place
     Attributes:
@@ -60,8 +59,8 @@ class Place(BaseModel, Base):
                                cascade='all, delete-orphan')
 
         amenities = relationship('Amenity',
-                                secondary='place_amenity',
-                                backref='places', viewonly=False)
+                                 secondary='place_amenity',
+                                 backref='places', viewonly=False)
     else:
         @property
         def reviews(self):

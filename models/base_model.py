@@ -79,16 +79,6 @@ class BaseModel:
             my_dict.pop('_sa_instance_state', None)
         return my_dict
 
-        #dic = {}
-        #for k, v in self.__dict__.items():
-         #   if k == "created_at" or k == "updated_at":
-          #      dic[k] = datetime.strftime(v, "%Y-%m-%dT%H:%M:%S.%f")
-           # else:
-            #    dic[k] = v
-             #   dic["__class__"] = self.__class__.__name__
-
-        #return dic
-
     def delete(self):
         """deletes the current object"""
         models.storage.delete(self)

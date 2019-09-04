@@ -29,11 +29,6 @@ class FileStorage:
         if cls:
             return {key: obj for (key, obj) in self.__objects.items()
                     if isinstance(obj, cls)}
-           # my_dic = {}
-            #for key, value in FileStorage.__objects.items():
-             #   if isinstance(value, cls):
-              #      my_dic[key] = value
-            #return my_dic
         return self.__objects
 
     def new(self, obj):
@@ -74,12 +69,10 @@ class FileStorage:
         except FileNotFoundError:
             pass
 
-
     def close(self):
         """call reload() to deserialize json file to obj dictionary
         """
         self.reload()
-
 
     def classes(self):
         """Returns a dictionary of valid classes and their references."""

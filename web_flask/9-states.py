@@ -85,7 +85,7 @@ def hello_states_and_cities(id=None):
             new = None
             b = 'Not found!'
     return render_template('9-states.html', new=new, b=b)
-    
+
 
 @app.teardown_appcontext
 def do_teardown(self):

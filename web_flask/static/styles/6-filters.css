@@ -18,9 +18,11 @@ button {
     top: 15%;
     right: 30px;
 }
+
 button:hover {
     opacity: 0.9;
 }
+
 .filters div {
     display: inline-grid;
 }

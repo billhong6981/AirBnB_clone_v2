@@ -8,7 +8,7 @@ app.url_map.strict_slashes = False
 
 @app.route('/states_list')
 def hello_states():
-    """displays all states"""
+    """displays all states in the database"""
     dic = storage.all('State')
     return render_template('7-states_list.html', dic=dic)
 

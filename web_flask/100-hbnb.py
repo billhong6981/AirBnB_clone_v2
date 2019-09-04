@@ -30,7 +30,7 @@ def hello_hbnb_filters():
 
 @app.route('/hbnb')
 def hello_hbnb():
-    """displays price_by_night"""
+    """displays price_by_night from place"""
     dic = storage.all('State')
     a_dic = storage.all('Amenity')
     p_dic = storage.all('Place')

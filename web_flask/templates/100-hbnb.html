@@ -15,19 +15,19 @@
     </header>
     <div class="container">
       <section class="filters">
-	<div class="locations">
-	  <h3>States</h3>
-	  <h4>&nbsp</h4>
-	  <div class="popover">
-	    <ul>
-	      {%- for value in dic.values()|sort(attribute='name') %}
-	      <li>
-		<h2>{{ value.name }}:</h2>
-		<ul>
-		  {%- for c in value.cities|sort(attribute='name') %}
-		  <li>{{ c.name }}</li>
-		  {%- endfor %}
-		</ul>
+		<div class="locations">
+	  		<h3>States</h3>
+	  		<h4>&nbsp</h4>
+	  	<div class="popover">
+	    	<ul>
+	      	{%- for value in dic.values()|sort(attribute='name') %}
+	      		<li>
+				<h2>{{ value.name }}:</h2>
+			<ul>
+		  	{%- for c in value.cities|sort(attribute='name') %}
+		  	<li>{{ c.name }}</li>
+		  	{%- endfor %}
+			</ul>
 	      </li>
 	      {%- endfor %}
 	    </ul>
@@ -67,7 +67,9 @@
 	    {%- endfor %}
           </div>
           <div class="description">
-	    {{ pl.description }}
+			<p>
+			{{ '\n'.join(pl.description.split('<BR />')) }}
+			</p>
           </div>
 	</article>
 	 {%- endfor %}

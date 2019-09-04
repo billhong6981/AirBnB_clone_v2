@@ -28,7 +28,7 @@ button:hover {
     margin-left: 15%;
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 600;
+    font-size: 16px;
 }
 .filters h3 {
     margin-left: 15%;
@@ -56,17 +56,22 @@ button:hover {
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background: #FAFAFA;
-    padding-bottom: 25px;
-    max-height: 300px;
-    z-index: 1000;
+    padding-bottom: 250px;
 }
 .amenities .popover {
-    padding: 20px 0;
     margin-left: -5px;
-    margin-top: 1%;
+    margin-top: -1px;
+    padding-bottom: 250px;
+    max-height: 300px;
+    z-index: 5;
+    overflow: scroll;
 }
 .locations .popover {
-    margin-top: 1%;
+    margin-top: -1px;
+    margin-left: -1px;
+    max-height: 300px;
+    z-index: 5;
+    overflow: scroll;
 }
 .popover ul {
     list-style-type: none;
